@@ -1,79 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body{
+        body {
             background-color: #242d47;
         }
 
-        .container{
+        .container {
             margin: 100% auto;
             padding: 16px;
             width: 60%;
             height: 80vh;
-            box-shadow: 2px 2px 15px 3px rgb(142, 221, 140) ;
+            box-shadow: 2px 2px 15px 3px rgb(142, 221, 140);
             display: grid;
-            grid-template-rows: repeat(5,1fr);
-            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: repeat(5, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 12px;
             border-radius: 10px;
         }
 
-        #rock{ 
+        #rock {
             grid-column: 1;
             background-color: white;
             display: grid;
             place-items: center;
         }
 
-        #papper{
+        #papper {
             grid-column: 2;
             background-color: white;
             display: grid;
             place-items: center;
         }
 
-        #sissors{
+        #sissors {
             grid-column: 3;
             background-color: white;
             display: grid;
             place-items: center;
         }
 
-        #choice{
+        #choice {
             grid-column: 1/-1;
             background-color: white;
             display: grid;
             place-items: center;
         }
 
-        #result{
+        #result {
             grid-column: 1/-1;
             background-color: white;
             display: grid;
             place-items: center;
         }
 
-        #score{
+        #score {
             grid-column: 1/-1;
             background-color: white;
             display: grid;
             place-items: center;
         }
 
-        #cleargame{
+        #cleargame {
             grid-column: 2;
             background-color: white;
             display: grid;
             place-items: center;
         }
-
     </style>
 </head>
+
 <body>
     <div class="container">
         <div id="rock" class="rps" value="rock">ROCK</div>
@@ -82,118 +83,125 @@
         <div id="choice" class="rps"></div>
         <div id="score" class="rps"></div>
         <div id="result" class="rps"></div>
-        <div id="cleargame" class="rps">CLEAR GAME</div>
+        <button id="cleargame" class="rps">CLEAR GAME</button>
     </div>
     <script>
-    
-        rockdiv=document.getElementById('rock')
-papperdiv=document.getElementById('papper')
-sissorsdiv=document.getElementById('sissors')
-choicediv=document.getElementById('choice')
-scorediv=document.getElementById('score')
-options=['rock','papper','sissors']
-let computerchoice;
-let personchoice;
-let computerscore=0;
-let personscore=0;
-resultdiv=document.getElementById('result')
-cleargamediv=document.getElementById('cleargame')
-// RANDOM SELECTOR
-let cmpchoice = (options) => {
-    let r=Math.floor(Math.random()*options.length)
-    return options[r]
-}
-// ONCLICK ON ROCK
-rockdiv.onclick= () => {
-    personchoice='rock';
-    computerchoice=cmpchoice(options);
-    domchoice(personchoice,computerchoice);
-}
-// ONCLICK ON PAPPER 
-papperdiv.onclick=() => {
-    computerchoice=cmpchoice(options);
-    personchoice='papper';
-    domchoice(personchoice,computerchoice);
-}
-// ONCLICK ON SISSORS
-sissorsdiv.onclick= () => {
-    computerchoice=cmpchoice(options);
-    personchoice='sissors';
-    domchoice(personchoice,computerchoice);
-}
-// SCORE FUNCTION 
-score= (personchoice,computerchoice) => {
-    if (personchoice=='rock'){
-        if(computerchoice=='rock'){
-            personscore=0;
-            computerscore=0;
+
+
+
+        rockdiv = document.getElementById('rock')
+        papperdiv = document.getElementById('papper')
+        sissorsdiv = document.getElementById('sissors')
+        choicediv = document.getElementById('choice')
+        scorediv = document.getElementById('score')
+        options = ['rock', 'papper', 'sissors']
+        let computerchoice;
+        let personchoice;
+        let computerscore = 0;
+        let personscore = 0;
+        resultdiv = document.getElementById('result')
+        cleargamediv = document.getElementById('cleargame')
+        // RANDOM SELECTOR
+        let cmpchoice = (options) => {
+            let r = Math.floor(Math.random() * options.length)
+            return options[r]
         }
-        else if (computerchoice=='papper'){
-            personscore=-1;
-            computerscore=1;
+        // ONCLICK ON ROCK
+        rockdiv.onclick = () => {
+            personchoice = 'rock';
+            computerchoice = cmpchoice(options);
+            domchoice(personchoice, computerchoice);
         }
-        else if (computerchoice=='sissors'){
-            personscore=1;
-            computerscore=-1;
+        // ONCLICK ON PAPPER 
+        papperdiv.onclick = () => {
+            computerchoice = cmpchoice(options);
+            personchoice = 'papper';
+            domchoice(personchoice, computerchoice);
         }
-    }
-    if (personchoice=='papper'){
-        if(computerchoice=='rock'){
-            personscore=1;
-            computerscore=-1;
+        // ONCLICK ON SISSORS
+        sissorsdiv.onclick = () => {
+            computerchoice = cmpchoice(options);
+            personchoice = 'sissors';
+            domchoice(personchoice, computerchoice);
         }
-        else if (computerchoice=='papper'){
-            personscore=0;
-            computerscore=0;
+        // SCORE FUNCTION 
+        score = (personchoice, computerchoice) => {
+            if (personchoice == 'rock') {
+                if (computerchoice == 'rock') {
+                    personscore = 0;
+                    computerscore = 0;
+                }
+                else if (computerchoice == 'papper') {
+                    personscore = -1;
+                    computerscore = 1;
+                }
+                else if (computerchoice == 'sissors') {
+                    personscore = 1;
+                    computerscore = -1;
+                }
+            }
+            if (personchoice == 'papper') {
+                if (computerchoice == 'rock') {
+                    personscore = 1;
+                    computerscore = -1;
+                }
+                else if (computerchoice == 'papper') {
+                    personscore = 0;
+                    computerscore = 0;
+                }
+                else if (computerchoice == 'sissors') {
+                    personscore = -1;
+                    computerscore = 1;
+                }
+            }
+            if (personchoice == 'sissors') {
+                if (computerchoice == 'rock') {
+                    personscore = -1;
+                    computerscore = 1;
+                }
+                else if (computerchoice == 'papper') {
+                    personscore = 1;
+                    computerscore = -1;
+                }
+                else if (computerchoice == 'sissors') {
+                    personscore = 0;
+                    computerscore = 0;
+                }
+            }
+            if(personchoice==''){personscore='';
+        computerscore=''}
+            scorediv.innerHTML = `<h3>${personscore} vs ${computerscore}</h3>`
+            resultdom(personscore, computerscore);
         }
-        else if (computerchoice=='sissors'){
-            personscore=-1;
-            computerscore=1;
+        // DOM ON CHOICE
+        domchoice = (personchoice, computerchoice) => {
+            choice.innerHTML = `<h3>${personchoice} vs ${computerchoice}</h3>`
+            score(personchoice, computerchoice);
         }
-    }
-    if (personchoice=='sissors'){
-        if(computerchoice=='rock'){
-            personscore=-1;
-            computerscore=1;
+        // DOM ON RESULT
+        resultdom = (personscore, computerscore) => {
+            
+            if (personscore > computerscore) {
+                resultdiv.innerHTML = `<h3> YOU WIN !!</h3>`
+            }
+            else if(personscore==''  ){
+                resultdiv.innerHTML = `<h3>start playing</h3>`
+                
+            }
+            else if (personscore == computerscore) {
+                resultdiv.innerHTML = `<h3> IT IS DRAW </h3>`
+            }
+            else if (computerscore > personscore) {
+                resultdiv.innerHTML = `<h3> COMPUTER WIN !!</h3>`
+            }
         }
-        else if (computerchoice=='papper'){
-            personscore=1;
-            computerscore=-1;
+        cleargamebtn = document.getElementById('cleargame');
+        cleargamebtn.onclick = () => {
+            resultdom('', '');
+            domchoice('', '');
+            score('','');
         }
-        else if (computerchoice=='sissors'){
-            personscore=0;
-            computerscore=0;
-        }
-    }
-    scorediv.innerHTML=`<h3>${personscore} vs ${computerscore}</h3>`
-    resultdom(personscore,computerscore);
-}
-// DOM ON CHOICE
-domchoice= (personchoice,computerchoice) => {
-    choice.innerHTML=`<h3>${personchoice} vs ${computerchoice}</h3>`
-    score (personchoice,computerchoice);
-}
-// DOM ON RESULT
-resultdom=(personscore,computerscore) => {
-    if(personscore>computerscore){
-        resultdiv.innerHTML=`<h3> YOU WIN !!</h3>`
-    }
-    else if (personscore==computerscore){
-        resultdiv.innerHTML=`<h3> IT IS DRAW </h3>`
-    }
-    else{
-        resultdiv.innerHTML=`<h3> COMPUTER WIN !!</h3>`
-    }
-}
-cleargamebtn=document.getElementById('cleargame');
-        cleargamebtn.onlick=()=>{
-            resultdiv.innerHTML='';
-            personchoice='';
-            computerchoice='';
-            personscore='';
-            computerscore='';
-        }
+
+
     </script>
-</body> 
-</html>
- 
+</body>
