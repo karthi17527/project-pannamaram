@@ -185,6 +185,14 @@ resultdom=(personscore,computerscore) => {
         resultdiv.innerHTML=`<h3> COMPUTER WIN !!</h3>`
     }
 }
+cleargamebtn=document.getElementById('cleargame');
+        cleargamebtn.onlick=()=>{
+            resultdiv.innerHTML='';
+            personchoice='';
+            computerchoice='';
+            personscore='';
+            computerscore='';
+        }
     </script>
 </body> 
 </html>
